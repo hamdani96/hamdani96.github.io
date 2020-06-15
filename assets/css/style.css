@@ -1,0 +1,110 @@
+@font-face {
+	font-family: 'Jost';
+	src: url('../fonts/Jost-Light.ttf');
+}
+
+html, body {
+	scroll-behavior: smooth;
+	width: 100%;
+	height: 100vh;
+	font-family: 'Jost', sans-serif;
+}
+
+.landing-1 .jumbotron {
+	background-image: url('../img/bg-4.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: #fff;
+	height: 722px;
+	width: 100%;
+	border-radius: 0;
+	margin-top: -72px;
+}
+
+@media (min-width: 800px) {
+	/*.landing-1 .jumbotron {
+		position: absolute;
+		padding-left: 50%;
+	}
+
+	.landing-2 {
+		position: relative;
+		padding-top: 72%;
+	}*/
+
+	.profile-mobile {
+		display: none;
+	}
+}
+
+@media (max-width: 783.22px) {
+	.landing-1 .jumbotron {
+		background-image: url('../img/bg-mobile-2.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-color: #fff;
+		height: 600px;
+		border-radius: 0;
+	}
+
+	.landing-1 .bg-text {
+		padding-top: 5rem;
+	}
+}
+
+@media (min-width: 783.23px) {
+	.landing-1 .bg-text {
+	padding-top: 10rem;
+	width: 50%;
+}
+}
+
+.landing-1 .bg-text .display-1 {
+	font-weight: 1000;
+	line-height: 1;
+	color: #fb6340;
+}
+
+.landing-2 {
+	text-align: center;
+}
+
+.landing-2 i {
+	margin-top: 2rem;
+}
+
+.line {
+	height: 25px;
+	background-color: #ffb52b;
+	margin-top: 2rem;
+}
+
+.landing-3 {
+	margin-top: 4rem;
+	text-align: center;
+}
+
+.card {
+	box-shadow: 0px 20px 20px grey;
+	margin-top: 3rem;
+}
+
+.landing-3 .btn{
+	margin-top: 5px;
+}
+
+@media (min-width: 767.99px) {
+	.view-mobile {
+		display: none;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.view-pc {
+		display: none;
+	}
+
+	s
+}
