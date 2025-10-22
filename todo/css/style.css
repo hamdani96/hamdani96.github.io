@@ -9,12 +9,12 @@ body {
 
 .mobile-wrapper {
     max-width: 500px;
-    margin: 0 auto 8rem auto;
+    margin: auto;
     min-height: 100vh;
 }
 
 .hero-title {
-    padding: 20px 20px;
+    padding: 20px;
     border-bottom: 1px solid #c4c4c4;
 }
 
@@ -45,7 +45,7 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .todo-list {
