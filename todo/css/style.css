@@ -51,8 +51,7 @@ body {
 .todo-list {
     list-style: none;
     padding: 10px;
-    margin: 15px -15px;
-    width: 95%;
+    margin: 15px;
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
