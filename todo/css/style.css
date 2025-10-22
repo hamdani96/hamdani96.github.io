@@ -1,0 +1,80 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.mobile-wrapper {
+    max-width: 500px;
+    margin:  auto;
+    background-color: #F2F2F2;
+    min-height: 100vh;
+}
+
+.hero-title {
+    padding: 20px 20px;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.form-create {
+    display: flex;
+    padding: 20px 20px 5px 20px;
+    gap: 10px;
+}
+
+.form-control {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #FF67B6;
+    box-shadow: 0 0 5px rgba(255, 103, 182, 0.5);
+}
+
+.btn-primary {
+    background-color: #FF67B6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 10px;
+    margin: 15px -15px;
+    width: 95%;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: #c4c4c4;
+    border: 2px solid #c4c4c4;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #FF67B6;
+    border-color: #FF67B6;
+}
+
+.btn-delete {
+    background-color: transparent;
+    border: none;
+    color: #f32821;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: auto;
+}
