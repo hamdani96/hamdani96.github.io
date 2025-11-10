@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+    <title>SITTA UT | Bahan Ajar</title>
+
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        table.dataTable {
+            width: 100% !important;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="profile">
+            <img src="assets/profile.webp" alt="Profile">
+            <div class="profile-info">
+                <h4 id="show-name"></h4>
+                <small id="show-email"></small>
+            </div>
+            <a href="index.html">
+                <button class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </a>
+        </div>
+
+        <div class="menu">
+            <p class="menu-title">Menu</p>
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="stok.html" class="menu-item active">
+                <i class="fa-solid fa-book"></i> Informasi Bahan Ajar
+            </a>
+            <a href="tracking.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i> Tracking Pengiriman
+            </a>
+
+            <p class="menu-title">Laporan</p>
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <i class="fa-solid fa-file-lines"></i> Laporan
+                    <i class="fa-solid fa-chevron-down arrow"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Monitoring Progress DO Bahan Ajar</a>
+                    <a href="#">Rekap Bahan Ajar</a>
+                </div>
+            </div>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-clock-rotate-left"></i> Histori Transaksi Bahan Ajar
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Informasi Bahan Ajar</h1>
+        <p>Dihalaman ini adalah daftar informasi bahan ajar</p>
+
+        <table id="datatable" class="display" style="margin-top: 3rem; width:100%;">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Cover</th>
+                    <th>Nama Bahan Ajar</th>
+                    <th>Kode Barang</th>
+                    <th>Kode Lokasi</th>
+                    <th>Jenis Barang</th>
+                    <th>Edisi</th>
+                    <th>Stok Tersedia</th>
+                </tr>
+            </thead>
+            <tbody id="list-book">
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+
+    <script>
+
+        var dataBahanAjar = [
+            {
+                kodeLokasi: "0TMP01",
+                kodeBarang: "ASIP4301",
+                namaBarang: "Pengantar Ilmu Komunikasi",
+                jenisBarang: "BMP",
+                edisi: "2",
+                stok: 548,
+                cover: "img/pengantar_komunikasi.jpg"
+            },
+            {
+                kodeLokasi: "0JKT01",
+                kodeBarang: "EKMA4216",
+                namaBarang: "Manajemen Keuangan",
+                jenisBarang: "BMP",
+                edisi: "3",
+                stok: 392,
+                cover: "img/manajemen_keuangan.jpg"
+            },
+            {
+                kodeLokasi: "0SBY02",
+                kodeBarang: "EKMA4310",
+                namaBarang: "Kepemimpinan",
+                jenisBarang: "BMP",
+                edisi: "1",
+                stok: 278,
+                cover: "img/kepemimpinan.jpg"
+            },
+            {
+                kodeLokasi: "0MLG01",
+                kodeBarang: "BIOL4211",
+                namaBarang: "Mikrobiologi Dasar",
+                jenisBarang: "BMP",
+                edisi: "2",
+                stok: 165,
+                cover: "img/mikrobiologi.jpg"
+            },
+            {
+                kodeLokasi: "0UPBJJBDG",
+                kodeBarang: "PAUD4401",
+                namaBarang: "Perkembangan Anak Usia Dini",
+                jenisBarang: "BMP",
+                edisi: "4",
+                stok: 204,
+                cover: "img/paud_perkembangan.jpeg"
+            }
+        ];
+
+        const tbody = document.getElementById("list-book");
+
+        dataBahanAjar.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td><a href="assets/${item.cover}" data-fancybox="gallery" data-caption="${item.namaBarang}"><img src="assets/${item.cover}" alt="${item.namaBarang}" width="40" height="50"></a></td>
+                <td> ${item.namaBarang}</td>
+                <td>${item.kodeBarang}</td>
+                <td>${item.kodeLokasi}</td>
+                <td>${item.jenisBarang}</td>
+                <td>${item.edisi}</td>
+                <td>${item.stok}</td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        var datatable = document.getElementById('datatable');
+        new DataTable(datatable, {
+            paging: true,
+            searching: true,
+            info: true,
+            responsive: true
+        });
+
+        Fancybox.bind("[data-fancybox='gallery']", {
+        Thumbs: false,
+        Toolbar: {
+            display: [
+                "close",
+                "zoom",
+                "fullscreen",
+                "download"
+            ]
+        },
+        caption: function (fancybox, carousel, slide) {
+            return slide.$trigger.dataset.caption || "";
+        }
+    });
+    </script>
+</body>
+
+</html>

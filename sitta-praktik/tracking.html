@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+    <title>SITTA UT | Tracking</title>
+
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Izitoast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+        integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="profile">
+            <img src="assets/profile.webp" alt="Profile">
+            <div class="profile-info">
+                <h4 id="show-name"></h4>
+                <small id="show-email"></small>
+            </div>
+            <button class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+
+        <div class="menu">
+            <p class="menu-title">Menu</p>
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="stok.html" class="menu-item">
+                <i class="fa-solid fa-book"></i> Informasi Bahan Ajar
+            </a>
+            <a href="tracking.html" class="menu-item active">
+                <i class="fa-solid fa-truck"></i> Tracking Pengiriman
+            </a>
+
+            <p class="menu-title">Laporan</p>
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <i class="fa-solid fa-file-lines"></i> Laporan
+                    <i class="fa-solid fa-chevron-down arrow"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Monitoring Progress DO Bahan Ajar</a>
+                    <a href="#">Rekap Bahan Ajar</a>
+                </div>
+            </div>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-clock-rotate-left"></i> Histori Transaksi Bahan Ajar
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Tracking Bahan Ajar</h1>
+        <p>Dihalaman ini kamu bisa cek sudah sampai mana bahan ajar dikirim</p>
+
+        <div class="flex">
+            <div class="input-group">
+                <label for="billing">Masukan No.DO/Billing</label>
+                <div class="input-wrapper">
+                    <input type="text" id="billing" placeholder="Masukkan No.DO/billing">
+                    <button id="track" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
+                        Cari</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-primary" id="information-tracking" style="width: 100%; color: white !important;">
+            <div class="status" id="status">Dalam Perjalanan</div>
+            <div class="card-content">
+                <!-- Kiri -->
+                <div class="left">
+                    <p class="section-title" id="student-name"></p>
+                    <p id="numberDo"></p>
+
+                    <p class="section-title">Detail Ekspedisi</p>
+                    <p>Ekspedisi</p>
+                    <p>Jenis Paket</p>
+                    <p>Total Pembayaran</p>
+                </div>
+
+                <!-- Kanan -->
+                <div class="right">
+                    <p class="section-title">Tanggal Pengiriman</p>
+                    <p id="shipping-date"></p>
+
+                    <p class="section-title">#</p>
+                    <p id="expedition"></p>
+                    <p id="package"></p>
+                    <p id="total"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="information-timeline" style="width: 100%; margin-top: 1.5rem;">
+            <div class="card-body">
+                <h2>Perjalanan Paket</h2>
+
+                <div class="timeline" id="timeline">
+
+                    <!-- <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <p><strong>Diteruskan ke Hub SPP Medan</strong></p>
+                                <p class="sub">Pengirim : UNIVERSITAS TERBUKA</p>
+                            </div>
+                            <div class="timeline-date">2025-11-08 11:59:02</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <p><strong>Dalam Perjalanan</strong></p>
+                            </div>
+                            <div class="timeline-date">2025-11-08 11:59:02</div>
+                        </div>
+                    </div> -->
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Made By Hamdani</p>
+        </footer>
+
+        <script src="js/script.js"></script>
+
+        <!-- izitoast -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+        integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

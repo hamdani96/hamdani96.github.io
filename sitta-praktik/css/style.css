@@ -1,0 +1,423 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #F2F2F2;
+    display: flex;
+    height: 100vh;
+}
+
+.auth-bg {
+    background-image: url('../assets/bg-auth.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    display: block;
+}
+
+.auth {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 500px;
+    background-color: #FFFFFF;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.card-primary {
+    background-color: #162c6a;
+}
+
+.card-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    text-align: center;
+}
+
+.card-body {
+    padding: 0px 20px 20px;
+}
+
+/* form-input */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    border-color: #214395;
+    outline: none;
+}
+
+/* form input */
+
+/* btn */
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #214395;
+    color: #FFFFFF;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #1a3270;
+}
+
+/* btn */
+
+/* Popup */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 2s ease-in-out;
+}
+
+.popup .header {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 100ms;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #1a3270;
+}
+
+.popup .content {
+    max-width: 100%;
+    padding: 20px;
+}
+
+/* Popup */
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 400px;
+    background-color: #e9edf2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Profil */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+}
+
+.profile-info h4 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.profile-info small {
+    color: #555;
+    font-size: 12px;
+}
+
+.logout-btn {
+    background-color: #214395;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #162c6a;
+}
+
+/* --- Menu --- */
+.menu {
+    flex: 1;
+}
+
+.menu-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.menu-item,
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 12px;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.menu-item:hover,
+.dropdown-toggle:hover {
+    background-color: #d5d9e0;
+}
+
+.menu-item.active {
+    background-color: #214395;
+    color: white;
+}
+
+/* --- Dropdown --- */
+.dropdown {
+    margin-bottom: 10px;
+}
+
+.dropdown .arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    padding-left: 25px;
+}
+
+.dropdown-content a {
+    padding: 8px 0;
+    font-size: 13px;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.dropdown-content a:hover {
+    color: #214395;
+}
+
+/* Saat aktif */
+.dropdown.open .dropdown-content {
+    display: flex;
+}
+
+.dropdown.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* --- Konten utama --- */
+.content {
+    flex: 1;
+    padding: 40px 60px 40px 30px;
+    background-color: #F2F2F2;
+    overflow-y: auto;
+}
+
+.content h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    color: #555;
+    font-size: 14px;
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 400px;
+    flex: 1;
+}
+
+.input-wrapper .btn {
+    margin-left: 20px;
+}
+
+/* tracking card */
+.status {
+    background-color: #22c55e;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.left,
+.right {
+    flex: 1;
+    min-width: 300px;
+}
+
+.right {
+    text-align: right;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.card-content p {
+    color: #FFFFFF;
+}
+
+/* Garis timeline */
+.timeline {
+    margin-top: 20px;
+    position: relative;
+    margin-left: 20px;
+    border-left: 2px solid #1f3b8a;
+    padding-left: 25px;
+}
+
+/* Titik bulat */
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -31px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #1f3b8a;
+    border-radius: 50%;
+}
+
+/* Konten teks dan tanggal */
+.timeline-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.timeline-text {
+    color: #000;
+}
+
+.timeline-text p {
+    margin: 2px 0;
+}
+
+.timeline-text .sub {
+    color: #999;
+    font-size: 13px;
+}
+
+.timeline-date {
+    color: #999;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #777;
+}

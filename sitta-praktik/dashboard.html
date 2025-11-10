@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+    <title>SITTA UT | Dashboard</title>
+
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="profile">
+            <img src="assets/profile.webp" alt="Profile">
+            <div class="profile-info">
+                <h4 id="show-name"></h4>
+                <small id="show-email"></small>
+            </div>
+            <a href="index.html">
+                <button class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </a>
+        </div>
+
+        <div class="menu">
+            <p class="menu-title">Menu</p>
+            <a href="dashboard.html" class="menu-item active">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="stok.html" class="menu-item">
+                <i class="fa-solid fa-book"></i> Informasi Bahan Ajar
+            </a>
+            <a href="tracking.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i> Tracking Pengiriman
+            </a>
+
+            <p class="menu-title">Laporan</p>
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <i class="fa-solid fa-file-lines"></i> Laporan
+                    <i class="fa-solid fa-chevron-down arrow"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Monitoring Progress DO Bahan Ajar</a>
+                    <a href="#">Rekap Bahan Ajar</a>
+                </div>
+            </div>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-clock-rotate-left"></i> Histori Transaksi Bahan Ajar
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Dashboard</h1>
+        <p id="greeting"></p>
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
