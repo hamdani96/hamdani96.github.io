@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #E5E6E0;
+}
+
+.index-page {
+    background: url('../assets/bg.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+  padding: 50px 80px;
+  border-radius: 16px;
+}
+
+.logo-section {
+  margin-bottom: 10px;
+}
+
+.ut-logo {
+  width: 60px;
+  opacity: 0.9;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4A996A;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #868686;
+  margin-bottom: 40px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #4A996A;
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #326847;
+}
+
+.btn-outline {
+  border: 2px solid #4A996A;
+  background: transparent;
+  color: #4A996A;
+}
+
+.btn-outline:hover {
+  background-color: #4A996A;
+  color: white;
+}
+
+.btn.small {
+  padding: 10px 16px;
+  font-size: 13px;
+}
+
+.header {
+  display: flex;
+}
+
+.header h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.stok {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.edit-stock {
+  font-size: 10px; 
+  color: #4A996A;
+  cursor: pointer;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #4A996A;
+}
+
+.stock-form {
+    max-width: 400px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border: 1px solid #4A996A;
+    outline: none;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f6f6f6;
+  font-weight: 600;
+}
+
+.track {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.track-form, .track-summary {
+    max-width: 500px;
+}
+
+.search-track {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.input-search-track .form-control {
+    width: 500px;
+}
+
+.status {
+    background-color: #4A996A;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.track-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.right {
+    text-align: right;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.track-content p {
+    color: #000000;
+}
+
+.timeline {
+    margin-top: 20px;
+    position: relative;
+    margin-left: 20px;
+    border-left: 2px solid #4A996A;
+    padding-left: 25px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -31px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #4A996A;
+    border-radius: 50%;
+}
+
+.timeline-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.timeline-text {
+    color: #000;
+}
+
+.timeline-text p {
+    margin: 2px 0;
+}
+
+.timeline-text .sub {
+    color: #999;
+    font-size: 13px;
+}
+
+.timeline-date {
+    color: #999;
+    font-size: 13px;
+}

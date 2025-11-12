@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+    <title>SITTA | Tracking</title>
+
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Izitoast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+        integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container" id="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <h2>
+                <a href="index.html" style="margin-right: 10px; color: #888888;">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                Data Delivery Bahan Ajar
+            </h2>
+        </header>
+
+        <!-- FORM TAMBAH DO -->
+        <div class="track">
+            <section class="card track-form">
+                <h3>Tambah Delivery Order</h3>
+                <form @submit.prevent="simpanDO">
+                    <div class="form-group">
+                        <label>No Delivery Order</label>
+                        <input type="text" class="form-control" v-model="form.noDO" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label>NIM</label>
+                        <input type="number" class="form-control" placeholder="Masukkan NIM" v-model="form.nim"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" placeholder="Masukkan nama" v-model="form.nama">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ekspedisi</label>
+                        <select class="form-control" v-model="form.ekspedisi">
+                            <option value="">Pilih ekspedisi</option>
+                            <option v-for="ek in pengirimanList" :key="ek.kode" :value="ek.nama">
+                                {{ ek.nama }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Paket</label>
+                        <select class="form-control" v-model="form.paket" @change="updateHarga">
+                            <option value="">Pilih paket</option>
+                            <option v-for="p in paket" :key="p.kode" :value="p.kode">{{ p.nama }}</option>
+                        </select>
+                        <div class="table-container" v-if="selectedPaket">
+                            <table>
+                                <tr>
+                                    <td>Kode</td>
+                                    <td>: {{ selectedPaket.kode }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>: {{ selectedPaket.nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Isi</td>
+                                    <td>
+                                        <ul>
+                                            <li v-for="(item, idx) in selectedPaket.isi" :key="idx">{{ item }}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Harga</td>
+                                    <td>: Rp {{ selectedPaket.harga.toLocaleString() }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Harga</label>
+                        <input type="text" class="form-control"
+                            :value="form.totalHarga ? 'Rp. ' + form.totalHarga.toLocaleString() : 'Pilih paket dahulu'"
+                            disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tanggal Kirim</label>
+                        <input type="date" class="form-control" v-model="form.tanggalKirim">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Simpan</button>
+                </form>
+            </section>
+
+            <!-- TABEL DAFTAR DO -->
+            <section class="card">
+                <div class="filter-header">
+                    <h3>Daftar Bahan Ajar</h3>
+                    <div class="filter-group">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Cari No.DO" v-model="filterCari">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal Kirim</th>
+                                <th>No. DO</th>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Ekspedisi</th>
+                                <th>Paket</th>
+                                <th>Total Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, i) in filteredDO" :key="item.noDO">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ item.tanggalKirim }}</td>
+                                <td>{{ item.noDO }}</td>
+                                <td>{{ item.nim }}</td>
+                                <td>{{ item.nama }}</td>
+                                <td>{{ item.ekspedisi }}</td>
+                                <td>{{ item.paket }}</td>
+                                <td>Rp. {{ item.total.toLocaleString() }}</td>
+                            </tr>
+                            <tr v-if="filteredDO.length === 0">
+                                <td colspan="8" style="text-align:center;">Tidak ada hasil yang cocok</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- TRACKING SECTION -->
+        <header class="header" style="margin-top: 20px;">
+            <h2>Tracking Bahan Ajar</h2>
+        </header>
+
+        <div class="search-track">
+            <div class="form-group input-search-track">
+                <input type="text" placeholder="Masukkan No. DO" class="form-control" v-model="cariDO">
+            </div>
+            <button @click="cariTracking" type="button" class="btn btn-primary small">Cari</button>
+        </div>
+
+        <div class="track" v-if="hasilTracking">
+            <section class="card track-summary">
+                <div class="status">{{ hasilTracking.status }}</div>
+
+                <div class="track-content">
+                    <div class="left">
+                        <p class="section-title">{{ hasilTracking.nama }}</p>
+                        <p>No DO: {{ cariDO }}</p>
+
+                        <p class="section-title">Detail Ekspedisi</p>
+                        <p>Ekspedisi</p>
+                        <p>Jenis Paket</p>
+                        <p>Total Pembayaran</p>
+                    </div>
+
+                    <div class="right">
+                        <p class="section-title">Tanggal Pengiriman</p>
+                        <p>{{ hasilTracking.tanggalKirim }}</p>
+
+                        <p class="section-title">#</p>
+                        <p>{{ hasilTracking.ekspedisi }}</p>
+                        <p>{{ hasilTracking.paket }}</p>
+                        <p>Rp. {{ hasilTracking.total.toLocaleString() }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3>Perjalanan Paket</h3>
+                <div class="timeline">
+                    <div class="timeline-item" v-for="(log, idx) in hasilTracking.perjalanan" :key="idx">
+                        <div class="timeline-content">
+                            <div class="timeline-text">
+                                <p><strong>{{ log.keterangan }}</strong></p>
+                            </div>
+                            <div class="timeline-date">{{ log.waktu }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Izitoast -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+        referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/tracking-app.js"></script>
+</body>
+
+</html>

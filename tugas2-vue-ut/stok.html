@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+    <title>SITTA | Stok</title>
+
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Izitoast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+        integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <header class="header">
+            <h2>
+                <a href="index.html" style="margin-right: 10px; color: #888888;"><i
+                        class="fa-solid fa-arrow-left"></i></a>
+                Stok Bahan Ajar
+            </h2>
+        </header>
+
+        <div class="stok">
+            <!-- Form Tambah -->
+            <section class="card stock-form">
+                <h3>Tambah Bahan Ajar</h3>
+                <form id="formTambah" class="form" @submit.prevent="tambahStok">
+                    <div class="form-group">
+                        <label>Kode Mata Kuliah</label>
+                        <input v-model="form.kode" type="text" class="form-control"
+                            placeholder="masukan kode mata kuliah">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Judul</label>
+                        <input v-model="form.judul" type="text" class="form-control" placeholder="masukan judul">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select v-model="form.kategori" class="form-control">
+                            <option value="">pilih kategori</option>
+                            <option v-for="(kat, idx) in kategoriList" :key="idx" :value="kat">{{ kat }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>UPBJJ</label>
+                        <select v-model="form.upbjj" class="form-control">
+                            <option value="">pilih UPBJJ</option>
+                            <option v-for="(u, i) in upbjjList" :key="i" :value="u">{{ u }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lokasi Rak</label>
+                        <input v-model="form.lokasiRak" type="text" class="form-control"
+                            placeholder="masukan lokasi rak">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input v-model.number="form.qty" type="number" class="form-control" placeholder="masukan stok">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stok Safety</label>
+                        <input v-model.number="form.safety" type="number" class="form-control"
+                            placeholder="masukan stok safety">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input v-model.number="form.harga" type="number" class="form-control"
+                            placeholder="masukan harga">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea v-model="form.catatanHTML" class="form-control"
+                            placeholder="masukan catatan"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Simpan</button>
+                </form>
+            </section>
+
+            <!-- Daftar Stok -->
+            <section class="card">
+                <div class="filter-header">
+                    <h3>Daftar bahan ajar</h3>
+                    <div class="filter-group">
+                        <div class="form-group">
+                            <select v-model="filter.upbjj" class="form-control">
+                                <option value="">Filter UT-Daerah</option>
+                                <option v-for="(u, i) in upbjjList" :key="i" :value="u">{{ u }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select v-model="filter.kategori" class="form-control">
+                                <option value="">Filter Kategori</option>
+                                <option v-for="(kat, idx) in kategoriList" :key="idx" :value="kat">{{ kat }}</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-outline small" @click="resetFilter">Reset Filter</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Judul</th>
+                                <th>Kategori</th>
+                                <th>UT-Daerah</th>
+                                <th>Lokasi Rak</th>
+                                <th>Stok</th>
+                                <th>Safety</th>
+                                <th>Status</th>
+                                <th>Harga</th>
+                                <th>Catatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in filteredStok" :key="item.kode">
+                                <td>{{ index + 1 }}</td>
+                                <td>{{ item.kode }}</td>
+                                <td>{{ item.judul }}</td>
+                                <td>{{ item.kategori }}</td>
+                                <td>{{ item.upbjj }}</td>
+                                <td>{{ item.lokasiRak }}</td>
+                                <td>
+                                    <template v-if="editingKode === item.kode">
+                                        <input type="number" v-model.number="item.qty"
+                                            class="form-control form-control-inline" @blur="finishEdit"
+                                            @keyup.enter="finishEdit" />
+                                    </template>
+                                    <template v-else>
+                                        {{ item.qty }}
+                                        <i class="fa-solid fa-pencil edit-stock" @click="editQty(item.kode)"></i>
+                                    </template>
+                                </td>
+                                <td>{{ item.safety }}</td>
+                                <td>
+                                    <span v-if="item.qty === 0" style="color:red;">Kosong</span>
+                                    <span v-else-if="item.qty < item.safety" style="color:orange;">Menipis</span>
+                                    <span v-else style="color:green;">Aman</span>
+                                </td>
+                                <td>Rp {{ item.harga.toLocaleString() }}</td>
+                                <td style="width: 20px;" v-html="item.catatanHTML"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Izitoast -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+        referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/stok-app.js"></script>
+</body>
+
+</html>
