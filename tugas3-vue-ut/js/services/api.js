@@ -1,5 +1,5 @@
 window.api = {
-    jsonPath: '/data/dataBahanAjar.json',
+    jsonPath: '/tugas3-vue-ut//data/dataBahanAjar.json',
 
     async getAllData() {
         const response = await fetch(this.jsonPath);
