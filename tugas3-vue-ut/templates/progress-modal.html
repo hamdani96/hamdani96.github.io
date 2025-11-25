@@ -1,0 +1,12 @@
+<div v-if="show" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Tambah Progress</h3>
+        <div class="form-group">
+            <textarea v-model="keterangan" placeholder="Masukkan keterangan" class="form-control"></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" @click="tutup">Batal</button>
+            <button class="btn btn-primary" @click="simpan">Simpan</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SITTA</title>
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Google Fonts Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Izitoast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+        integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <nav class="text-right">
+                <button @click="tab='stok'" class="btn btn-primary">Stok Bahan Ajar</button>
+                <button @click="tab='track'" class="btn btn-primary">Track</button>
+            </nav>
+
+            <section v-show="tab==='stok'">
+                <do-stock></do-stock>
+            </section>
+            <section v-show="tab==='track'">
+                <do-tracking></do-tracking>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="js/services/api.js"></script>
+    <script src="js/components/do-stock.js"></script>
+    <script src="js/components/do-tracking.js"></script>
+    <script src="js/components/progress-modal.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+        referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
